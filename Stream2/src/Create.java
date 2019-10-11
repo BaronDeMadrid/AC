@@ -29,7 +29,7 @@ public class Create
 	private void checksIfExists(String contains,File file,String replace) throws IOException{
 		byte [] modify = new byte[20];
 		String compare = null;
-		RandomAccessFile raf = new RandomAccessFile(file, "rw");
+		RandomAccessFile raf = new RandomAccessFile(file, "r");
 		while (raf.getFilePointer()<file.length())
 		raf.seek(raf.getFilePointer()+4);
 			for(int i = 0 ;i<10;i++)
@@ -47,6 +47,7 @@ public class Create
 	void modify (long pointer,String replace,File file) throws IOException{
 		RandomAccessFile raf = new RandomAccessFile(file,"w");
 		byte[] bytes = replace.getBytes();
+		raf.seek(pointer);
 		for(int i = 0;i<bytes.length;i++) 
 		{
 			raf.write(bytes[i]);

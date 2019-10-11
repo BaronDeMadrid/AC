@@ -8,11 +8,12 @@ public class Process {
 
 		public static void main(String[] args) {
 			try {
+				
 			DataOutputStream dos = new DataOutputStream(new FileOutputStream(new File("file.dat"))); 
 			
 				dos.write(3);
 				dos.writeChars("String");
-				DataInputStream dos = new DataOutputStream(new FileOutputStream(new File("file.dat"))); 
+				DataInputStream dis = new DataInputStream(new FileInputStream(new File("file.dat"))); 
 				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
