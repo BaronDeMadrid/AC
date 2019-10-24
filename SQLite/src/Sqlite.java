@@ -8,12 +8,12 @@ public class Sqlite {
 	}
 
 }
-class DB
+class DBSqlite
 {
 	Connection cn;
-	DB(String db){
+	DBSqlite(String db){
 		try {
-			cn = DriverManager.getConnection("jdbc:sqlite:"+db);
+			cn = DriverManager.getConnection("jdbc:sqlite:\\"+db);
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -38,14 +38,14 @@ class DB
 			  +")");
 		
 	}
-	boolean insert(Object object,String tableName) throws SQLException {
+boolean insert(String content,String tableName) throws SQLException {
 		Statement st = (Statement) cn.createStatement();
-		return st.execute("insert into "+tableName+"("+object.value+")");
+		return st.execute("insert into "+tableName+"("+content+")");
 	}
-	boolean modify(Object object,String tableName,String condition) throws SQLException {
+boolean modify(String content,String tableName,String condition) throws SQLException {
 		
 		Statement st = (Statement) cn.createStatement();
-		return st.execute("update "+tableName+"set "+object.value+"where"+condition);
+		return st.execute("update "+tableName+"set "+content+"where"+condition);
 	}
 boolean modify(String tableName,String condition) throws SQLException {
 		
